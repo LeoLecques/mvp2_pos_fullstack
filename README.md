@@ -2,6 +2,9 @@
 
 Este projeto implementa uma arquitetura baseada em microsserviços para realizar operações cambiais.
 
+## 🏗️ Arquitetura
+![Diagrama da Arquitetura](arquitetura_mvp2_pos.png)
+
 ## 🧱 Estrutura
 
 ```
