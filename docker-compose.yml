@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  api_principal:
+    build: ./api_principal
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./api_principal:/app
+
+    depends_on:
+    - api_secundaria
+
+  api_secundaria:
+    build: ./api_secundaria
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./api_secundaria:/app
