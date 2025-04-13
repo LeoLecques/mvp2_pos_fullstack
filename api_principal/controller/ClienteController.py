@@ -223,8 +223,8 @@ def consultar_operacao(query: ConsultaOperacaoRequestSchema):
         session = Session()
 
         existe = session.query(ClienteOperacao).filter(
-            ClienteOperacao.cpf == cpf,
-            ClienteOperacao.id_operacao == id_operacao
+            ClienteOperacao.cpf == query.cpf,
+            ClienteOperacao.id_operacao == query.id_operacao
         ).first()
 
         if not existe:
