@@ -230,7 +230,7 @@ def consultar_operacao(query: ConsultaOperacaoRequestSchema):
         if not existe:
             return {"message": "Operação não encontrada para este CPF."}, 404
 
-        resposta = requests.get("http://api_secundaria:5001/operacao", params={"id_operacao": id_operacao})
+        resposta = requests.get("http://api_secundaria:5001/operacao", params={"id_operacao": query.id_operacao})
         if resposta.status_code != 200:
             return {"message": "Erro ao consultar operação."}, 400
 
