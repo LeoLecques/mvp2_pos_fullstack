@@ -1,35 +1,41 @@
- # Corban Manager
+# API Principal – MVP Câmbio
 
-A motivação para o desenvolvimento deste projeto foi atender à necessidade de pequenas instituições financeiras, que enfrentam dificuldades em oferecer uma camada eficiente de operações e gestão para seus correspondentes bancários.
+Esta API é responsável pelo **cadastro e gerenciamento de clientes**, bem como pela **intermediação das operações de câmbio**, consultando e registrando operações via API secundária.
 
-O projeto foi implementado utilizando tecnologias robustas e acessíveis. No backend, foram empregadas Python e SQLite, garantindo confiabilidade e eficiência no processamento de dados. Para o frontend, foram utilizadas HTML, CSS, Bootstrap e JavaScript, proporcionando uma interface intuitiva e responsiva para os usuários.
+## 📌 Funcionalidades
+- Cadastro de cliente (com consumo da API ViaCEP para preenchimento de endereço)
+- Consulta e remoção de clientes
+- Atualização de endereço
+- Cotação de câmbio via API Secundária
+- Registro e consulta de operações de câmbio
 
----
-## Como executar 
+## 🚀 Como executar
 
-
-Será necessário ter todas as libs python listadas no `requirements.txt` instaladas.
-Após clonar o repositório, é necessário ir ao diretório raiz, pelo terminal, para poder executar os comandos descritos abaixo.
-
-> É fortemente indicado o uso de ambientes virtuais do tipo [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html).
-
-Criação Ambiente Virtual
-```
-python -m venv .venv
-```
-Ativação Ambiente Virtual (Windows)
-```
-.\.venv\Scripts\activate
-```
-Instalação bibliotecas do arquivo `requirements.txt`.
-```
-(env)$ pip install -r requirements.txt
+Ou com Docker Compose (recomendado):
+```bash
+docker-compose up --build
 ```
 
-Para executar a API  basta executar:
+## 🔗 API Externa Utilizada
+- **ViaCEP** – https://viacep.com.br
+  - Tipo: Gratuita e pública
+  - Uso: Preenchimento automático de endereço a partir do CEP
 
-```
-(env)$ python app.py
-```
+## 📂 Rotas principais
 
-Abra o [http://localhost:5000/#/](http://localhost:5000/#/) no navegador para verificar o status da API em execução.
+| Método | Rota            | Descrição                          |
+|--------|------------------|--------------------------------------|
+| POST   | /cliente         | Cadastrar cliente com CEP           |
+| GET    | /cliente         | Consultar clientes                  |
+| PUT    | /cliente         | Atualizar endereço do cliente       |
+| DELETE | /cliente         | Remover cliente                     |
+| POST   | /cotacao         | Realizar cotação via API secundária |
+| POST   | /operacao        | Registrar operação                  |
+| GET    | /operacao        | Consultar operação por ID           |
+| PUT    | /operacao        | Atualizar operação (D1/D2)          |
+
+## 📄 Documentação Swagger
+Acesse em:
+```
+http://localhost:5000/openapi
+```
