@@ -217,7 +217,7 @@ def realizar_operacao(body: OperacaoRequestSchema):
         return {"message": str(e)}, 500
     
 @app.get('/operacao', tags=[cliente_tag])
-def consultar_operacao(cpf: str, id_operacao: int):
+def consultar_operacao(query: ConsultaOperacaoRequestSchema):
     """Realiza a consulta de uma operação"""
     try:
         session = Session()
